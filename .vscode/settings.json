@@ -1,0 +1,26 @@
+{
+    "AVR.reporter.arguments": [
+        "-C"
+    ],
+    "AVR.source.compiler": "/usr/bin/avr-g++",
+    "AVR.compiler.arguments": [
+        "-Os",
+        "-fpermissive",
+        "-fno-exceptions",
+        "-fno-threadsafe-statics",
+        "-pipe"
+    ],
+    "AVR.programmer.tool": "/usr/bin/avrdude",
+    "AVR.source.libraries": [],
+    "AVR.device.type": "atmega328p",
+    "AVR.device.frequency": 16000000,
+    "AVR.programmer.type": "arduino",
+    "AVR.programmer.port": "/dev/ttyUSB0",
+    "AVR.programmer.rate": 57600,
+    "files.associations": {
+        "io.h": "c",
+        "portpins.h": "c",
+        "common.h": "c",
+        "iom328p.h": "c"
+    }
+}

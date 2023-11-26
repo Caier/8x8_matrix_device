@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "name": "AVR",
+            "intelliSenseMode": "${default}",
+            "compilerPath": "/usr/bin/avr-g++",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "includePath": [],
+            "compilerArgs": [
+                "-Os",
+                "-fpermissive",
+                "-fno-exceptions",
+                "-fno-threadsafe-statics",
+                "-pipe",
+                "-mmcu=atmega328p",
+                "-DF_CPU=16000000UL"
+            ]
+        },
+        {
+            "name": "driver",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/src/linux-zen/include",
+                "/usr/src/linux-zen/arch/x86/include",
+                "/usr/src/linux-zen/arch/x86/include/generated",
+                "/usr/src/linux-zen/arch/x86/include/uapi",
+                "/usr/src/linux-zen/arch/x86/include/generated/uapi",
+                "/usr/include",
+                "/usr/local/include"
+            ],
+            "defines": [
+                "KBUILD_MODNAME=\"module\"",
+                "__GNUC__",
+                "__KERNEL__",
+                "MODULE"
+            ],
+            "compilerPath": "/usr/bin/gcc"
+        }
+    ],
+    "version": 4
+}
