@@ -5,9 +5,7 @@ dev = "/dev/ledmatrix0"
 
 assert os.path.exists(dev) == True
 
+img = 0b1010101001010101101010100101010110101010010101011010101001010101
+
 with open(dev, "wb") as f:
-    state = False
-    while True:
-        f.raw.write(bytes([state]))
-        time.sleep(1)
-        state = not state
+    f.raw.write(img.to_bytes(8))

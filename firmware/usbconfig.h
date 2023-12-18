@@ -31,11 +31,11 @@ section at the end of this file).
 /* This is the port where the USB bus is connected. When you configure it to
  * "B", the registers PORTB, PINB and DDRB will be used.
  */
-#define USB_CFG_DMINUS_BIT      3
+#define USB_CFG_DMINUS_BIT      2
 /* This is the bit number in USB_CFG_IOPORT where the USB D- line is connected.
  * This may be any bit in the port.
  */
-#define USB_CFG_DPLUS_BIT       2
+#define USB_CFG_DPLUS_BIT       3
 /* This is the bit number in USB_CFG_IOPORT where the USB D+ line is connected.
  * This may be any bit in the port. Please note that D+ must also be connected
  * to interrupt pin INT0! [You can also use other interrupts, see section
@@ -44,7 +44,8 @@ section at the end of this file).
  * interrupt, the USB interrupt will also be triggered at Start-Of-Frame
  * markers every millisecond.]
  */
-#define USB_CFG_CLOCK_KHZ       (F_CPU/1000)
+//#define USB_CFG_CLOCK_KHZ       (F_CPU/1000)
+#define USB_CFG_CLOCK_KHZ 16000
 /* Clock rate of the AVR in kHz. Legal values are 12000, 12800, 15000, 16000,
  * 16500, 18000 and 20000. The 12.8 MHz and 16.5 MHz versions of the code
  * require no crystal, they tolerate +/- 1% deviation from the nominal
@@ -125,7 +126,7 @@ section at the end of this file).
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
  */
-#define USB_CFG_IMPLEMENT_FN_WRITE      0
+#define USB_CFG_IMPLEMENT_FN_WRITE      1
 /* Set this to 1 if you want usbFunctionWrite() to be called for control-out
  * transfers. Set it to 0 if you don't need it and want to save a couple of
  * bytes.
@@ -209,7 +210,7 @@ section at the end of this file).
 /* define this macro to 1 if you want the function usbMeasureFrameLength()
  * compiled in. This function can be used to calibrate the AVR's RC oscillator.
  */
-#define USB_USE_FAST_CRC                0
+#define USB_USE_FAST_CRC                1
 /* The assembler module has two implementations for the CRC algorithm. One is
  * faster, the other is smaller. This CRC routine is only used for transmitted
  * messages where timing is not critical. The faster routine needs 31 cycles
@@ -374,13 +375,13 @@ section at the end of this file).
  * which is not fully supported (such as IAR C) or if you use a differnt
  * interrupt than INT0, you may have to define some of these.
  */
-/* #define USB_INTR_CFG            MCUCR */
-/* #define USB_INTR_CFG_SET        ((1 << ISC00) | (1 << ISC01)) */
-/* #define USB_INTR_CFG_CLR        0 */
-/* #define USB_INTR_ENABLE         GIMSK */
-/* #define USB_INTR_ENABLE_BIT     INT0 */
-/* #define USB_INTR_PENDING        GIFR */
-/* #define USB_INTR_PENDING_BIT    INTF0 */
-/* #define USB_INTR_VECTOR         INT0_vect */
+#define USB_INTR_CFG            MCUCR 
+//#define USB_INTR_CFG_SET        ((1 << ISC00) | (1 << ISC01)) 
+#define USB_INTR_CFG_CLR        1 
+//#define USB_INTR_ENABLE         GIMSK 
+#define USB_INTR_ENABLE_BIT     INT1 
+//#define USB_INTR_PENDING        GIFR 
+#define USB_INTR_PENDING_BIT    INTF1 
+#define USB_INTR_VECTOR         INT1_vect 
 
 #endif /* __usbconfig_h_included__ */

@@ -1,9 +1,9 @@
 DEVICE = atmega328p
-AVRDUDE = avrdude -c arduino -P /dev/ttyUSB0 -p $(DEVICE) -b 57600
+AVRDUDE = avrdude -c arduino_as_isp -P /dev/ttyUSB0 -p $(DEVICE) -b 19200
 COMPILE = avr-gcc -Wall -Os -Iusbdrv -I. -mmcu=$(DEVICE) -DF_CPU=16000000
 COMPILECXX = avr-g++ -Wall -Os -Iusbdrv -I. -mmcu=$(DEVICE) -DF_CPU=16000000
 
-OBJECTS = usbdrv/usbdrvasm.o usbdrv/usbdrv.o usbdrv/oddebug.o main.o
+OBJECTS = usbdrv/usbdrvasm.o usbdrv/usbdrv.o usbdrv/oddebug.o screen.o main.o
 
 all:	main.hex
 
